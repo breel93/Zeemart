@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+   {% block content %}
+
+    <div class="container">
+        {% for obj in object_list %}
+
+        {{ obj.title }} <br/>
+
+        {% endfor %}    
+    </div>
+
+       
+    
+    {% endblock %}

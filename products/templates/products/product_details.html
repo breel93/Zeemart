@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+ {% load staticfiles %}
+ {% load crispy_forms_tags %}
+
+
+    {% block content %}   
+
+
+    <div class="container">
+        <div class='row'>
+            <div class="col-md-7">
+              <h1>{{ object.title }}</h1>   <br/>
+                {{ object.description| linebreaks }} <br/>
+                {{ object.price }}
+
+                {% if object.image %}
+                <img src='{{ object.image.url }}' class="img-fuild"/>
+                {% endif %}
+            </div>
+
+            <div class="col-md-5">
+                {% include 'products/snippet/update-cart.html' with product=object cart=cart %}
+            </div>
+
+
+        </div>
+           
+    </div>
+        
+   
+    {% endblock %}
+
+
+

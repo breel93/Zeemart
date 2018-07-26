@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}   
+
+
+<div class="container">
+
+    <div class="panel panel-default z-depth-4" id="regPanel">
+           
+        <div class="panel-heading">Register<small id="gotoSignIn"><a href="{% url 'main:login' %}">Sign in</a></small></div>
+        <div class="panel-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success btn-lg btn-block z-depth-2" type="submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}     
