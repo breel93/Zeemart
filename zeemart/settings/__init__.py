@@ -1,11 +1,6 @@
 from .base import *
 
-
-
 from .dev import *
-
-from .production import *
-
 
 
 try:
@@ -14,3 +9,4 @@ except:
     pass
 
 
+from .production import *
