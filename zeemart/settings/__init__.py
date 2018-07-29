@@ -1,10 +1,9 @@
 from .base import *
 
 
+from .development import *
 
 from .production import *
-
-from .development import *
 
 try:
     from .development import *
