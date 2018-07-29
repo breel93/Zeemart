@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     #third party
     'crispy_forms',
+    'storages',
     
 ]
 
@@ -176,3 +177,5 @@ CSRF_COOKIE_SECURE              = False
 SECURE_HSTS_SECONDS             = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
 SECURE_FRAME_DENY               = False
+
+

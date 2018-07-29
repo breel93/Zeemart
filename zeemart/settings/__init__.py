@@ -1,7 +1,10 @@
 from .base import *
 
-# from .local import *
+
+
 from .production import *
+
+from .development import *
 
 try:
     from .development import *

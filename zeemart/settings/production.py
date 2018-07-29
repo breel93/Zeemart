@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     #third party
     'crispy_forms',
+    'storages',
     
 ]
 
@@ -169,7 +170,7 @@ LOGIN_REDIRECT_URL = '/'
 
 
 
-
+from zeemart.aws.conf import *
 
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
@@ -185,3 +186,9 @@ CSRF_COOKIE_SECURE              = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
 SECURE_HSTS_SECONDS             = 1000000
 SECURE_FRAME_DENY               = True
+
+
+AWS_GROUP_NAME = "zeemart_ecommerce_group"
+AWS_USERNAME = "zeemart"
+AWS_ACCESS_KEY_ID = "AKIAI6KXATZCAQ5MRT4A"
+AWS_SECRET_KEY = "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"
