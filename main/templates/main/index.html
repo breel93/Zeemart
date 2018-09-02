@@ -1,4 +1,9 @@
-{% extends "base.html" %} {% load staticfiles %} {% block content %}
+{% extends "base.html" %} 
+{% load staticfiles %} {% block content %}
+{% block style %}
+    <link href='{% static "css/index.css" %}' rel="stylesheet">
+{% endblock %}
+
 <div class="container" id="hometext">
     <!-- ========================= SECTION MAIN ========================= -->
     <section class="section-main bg padding-y-sm">
@@ -6,78 +11,53 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row row-sm">
-                        <aside class="col-md-3">
-                            <h5 class="text-uppercase">My Markets</h5>
+                        <aside class="col-md-2">
+                            <h5 class="text-uppercase">Category</h5>
                             <ul class="menu-category list-dots">
                                 <li>
-                                    <a href="#">Food &amp Beverage </a>
+                                    <a href="#">Women Fashion </a>
                                 </li>
                                 <li>
-                                    <a href="#">Home Equipments </a>
+                                    <a href="#">Men Fasion </a>
                                 </li>
                                 <li>
-                                    <a href="#">Machinery Items </a>
+                                    <a href="#">Electronics </a>
                                 </li>
                                 <li>
-                                    <a href="#">Toys & Hobbies </a>
+                                    <a href="#">Computer and Accessories </a>
                                 </li>
                                 <li>
-                                    <a href="#">Consumer Electronics </a>
+                                    <a href="#">Phones and Tablets </a>
                                 </li>
                                 <li>
-                                    <a href="#">Beauty & Personal Care </a>
-                                </li>
-                                <li class="has-submenu">
-                                    <a href="#">More category
-                                        <i class="icon-arrow-right pull-right"></i>
-                                    </a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="#">Food &amp Beverage </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Home Equipments </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Machinery Items </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Toys & Hobbies </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Consumer Electronics </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Home & Garden </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Beauty & Personal Care </a>
-                                        </li>
-                                    </ul>
+                                    <a href="#">Other Category</a>
                                 </li>
                             </ul>
 
                         </aside>
                         <!-- col.// -->
-                        <div class="col-md-6">
+                        <div class="col-md-8">
 
-                            <!-- ================= main slide ================= -->
-                            <div class="owl-init slider-main owl-carousel" data-items="1" data-nav="true" data-dots="false">
-                                <div class="item-slide">
-                                    <img src="images/banners/slide1.jpg">
-                                </div>
-                                <div class="item-slide">
-                                    <img src="images/banners/slide2.jpg">
-                                </div>
-                                <div class="item-slide">
-                                    <img src="images/banners/slide3.jpg">
-                                </div>
+                            
+
+                            <div id="slideshow" class="cycle-slideshow"
+
+                                data-cycle-fx="fade"
+                                data-cycle-manual-fx="scrollHorz"
+                                data-cycle-speed="600"
+                                data-cycle-timeout="3000"
+                                data-cycle-next="#next"
+                                data-cycle-prev="#prev">
+                                <img src="{% static 'images/banners/banner1.jpg' %}">
+                                <img src="{% static 'images/banners/banner2.jpg' %}">
+                                <img src="{% static 'images/banners/banner3.jpg' %}">
+                                <img src="{% static 'images/banners/banner4.jpg' %}">
+                                <img src="{% static 'images/banners/banner5.jpg' %}">
+                                <img src="{% static 'images/banners/banner6.jpg' %}">
                             </div>
-                            <!-- ============== main slidesow .end // ============= -->
-
                         </div>
                         <!-- col.// -->
-                        <aside class="col-md-3">
+                        <aside class="col-md-2">
 
                             <h6 class="title-bg bg-secondary"> Qualified Suppliers</h6>
                             <div style="height:280px;">

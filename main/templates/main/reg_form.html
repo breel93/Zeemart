@@ -2,23 +2,37 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+{% block style %}
+    <link href='{% static "css/register.css" %}' rel="stylesheet">
+{% endblock %}
+
 
 {% block content %}   
 
 
 <div class="container">
 
-    <div class="panel panel-default z-depth-4" id="regPanel">
-           
-        <div class="panel-heading">Register<small id="gotoSignIn"><a href="{% url 'main:login' %}">Sign in</a></small></div>
-        <div class="panel-body">
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button class="btn btn-success btn-lg btn-block z-depth-2" type="submit">Create Account</button>
-            </form>
+        <div class="row">
+
+       
+                <div class="card col-4 mx-auto" id="card">
+                    <article class="card-body">
+                    <a href="{% url 'main:login' %}" class="float-right btn btn-outline-primary">Login</a>
+                    <h4 class="card-title mb-4 mt-1">Sign Up</h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }} 
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Sign Up  </button>
+                        </div> <!-- form-group// -->                                                           
+                    </form>
+                    </article>
+                </div> <!-- card.// -->
+    
+            
+    
+    
         </div>
-    </div>
 </div>
 
 

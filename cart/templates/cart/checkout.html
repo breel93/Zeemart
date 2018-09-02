@@ -3,20 +3,22 @@
 {% load staticfiles %}
 {% block content %}
 
+{% block style %}
+    <link href='{% static "css/register.css" %}' rel="stylesheet">
+{% endblock %}
+
 <div class="container"> 
 
         {{ object.order_id }} -- {{ object.cart }}
         {% if not billing_profile %}
-        <div class='row'>
-            <div class='col-lg-6 col-md-6'>
-            <p class='lead'>Login</p>
-            {% include 'main/snippet/form.html' with form=login_form next_url=request.build_absolute_uri %}
-            </div>
-             <div class='col-lg-6 col-md-6'> 
-             Continue as Guest
-            </div>
+            <div class='row'>
+                {{ object.order_id }} -- {{ object.cart }}
+                
+                <div class='col-lg-12 col-md-12'>
+                    {% include 'main/snippet/form.html' with form=login_form next_url=request.build_absolute_uri %}
+                </div>
 
-         </div>
+            </div>
 
         {% else %}
             <!-- <h1>Checkout</h1>
@@ -24,6 +26,8 @@
             <p>Cart Total: {{ object.cart.total }}</p>
             <p>Shipping Total: {{ object.shipping_total }}</p>
             <p>Order Total: {{ object.total }}</p> -->
+
+            {{ object.order_id }} -- {{ object.cart }}
 
 
             {% if not object.shipping_address %}

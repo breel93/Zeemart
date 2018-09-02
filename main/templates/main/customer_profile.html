@@ -2,19 +2,65 @@
 
 {% load staticfiles %}
 
+{% load crispy_forms_tags %}
+
+{% block style %}
+    <link href='{% static "css/customer_profile.css" %}' rel="stylesheet">
+{% endblock %}
+
 
    {% block content %}   
 
    <div class="container">
-       <form method="post">
-           {% csrf_token %}
-           {{ form.as_p }}
+       
+       <div class="row">
 
-           {{request.user.email}}
-           <br/>
-           
-           {{ form2.as_p }}
-           <button type="submit">Update</button>
-       </form>
+       
+            <div class="card col-4" id="card">
+                <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">{{ request.user.first_name }}</h4>
+                <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+             
+                        {{request.user.email}}
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                        {{ form2|crispy }}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Update  </button>
+                    </div> <!-- form-group// -->                                                           
+                </form>
+                </article>
+            </div> <!-- card.// -->
+
+
+            
+            <div class="box col-6">
+                    <dl class="dlist-align">
+                    <dt>Some info: </dt>
+                    <dd> Everything in this life is always tempporary</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                    <dt>Parameter: </dt>
+                    <dd>Value name</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                    <dt>Color:</dt>
+                    <dd>Orange and Black</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                    <dt>Material:</dt>
+                    <dd>Leather</dd>
+                    </dl>
+                    </div> <!-- box.// -->
+                    
+
+                    
+
+
+            </div>
    </div>
    {% endblock %}

@@ -3,6 +3,10 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+{% block style %}
+    <link href='{% static "css/search_list.css" %}' rel="stylesheet">
+{% endblock %}
+
 
    {% block content %}
 
@@ -10,12 +14,12 @@
 
             
             <div class='row  mb-3'>
-                        {% if query %}
+                    {% if query %}
                         <div class='col-12' >
                             Results for <b>{{ query }}</b>
                             <hr/>
                         </div>
-                        {% else %}
+                    {% else %}
             
                         <div class='col-12 col-md-6 mx-auto py-5'>
                             {% include 'search/snippet/search_form.html' %}
@@ -24,22 +28,20 @@
                         <div class='col-12'>
                             <hr>
                         </div>
-                        {% endif %}
+                    {% endif %}
             </div>
             
             
-            <div class='row'>
-            
-            
-            
+            <div class='row no-gutter'>
+        
                 {% for obj in object_list %}
-                    <div class='col-lg-4'>
+                    <div class='col-lg-3 col-md-4 col-sm-6 col-6'>
             
                     {% include 'products/snippet/card.html' with instance=obj %}  
                     
-                    {% if forloop.counter|divisibleby:3 %}
+                    {% if forloop.counter|divisibleby:5 %}
                      </div> </div><div class='row'><div class='col-12'><hr/></div>
-                    {% elif forloop.counter|divisibleby:2 %}
+                    {% elif forloop.counter|divisibleby:3 %}
                         </div> </div><div class='row'><div class='col-12'><hr/></div>
                     {% else %}
                      </div>  

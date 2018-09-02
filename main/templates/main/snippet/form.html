@@ -1,30 +1,40 @@
-<!-- <form method='POST' action='{% url "main:login" %}'> 
-    {% csrf_token %}
-    {% if next_url %}
-    <input type='hidden' name='next' value='{{ next_url }}' />
-    {% endif %}
 
-  {{ form }}
-  <button type='submit' class='btn btn-default'>Submit</button>
-</form> -->
 
+
+{% load staticfiles %}
 {% load crispy_forms_tags %}
-<div class="container">
-        <div class="panel panel-default z-depth-4" id="loginPanel">
-               
-            <div class="panel-heading">Login<small id="gotoSignUp"><a href="{% url 'main:register' %}">Sign Up</a></small></div>
-            <div class="panel-body">
-                <form method="POST" action='{% url "main:login" %}'>
-                    {% csrf_token %}
-                    {% if next_url %}
-                    <input type='hidden' name='next' value='{{ next_url }}' />
-                    {% endif %}
-                    {{ form |crispy}}
-                    <button class="btn btn-success btn-lg btn-block z-depth-2 " type="submit">Login</button>
-                </form>
+
+
+    <div class="container">
+            
+
+            
+            <div class="row">
+
+        
+                <div class="card col-4 mx-auto" id="card">
+                    <article class="card-body">
+                    <a href="{% url 'main:register' %}" class="float-right btn btn-outline-primary">Sign Up</a>
+                    <h4 class="card-title mb-4 mt-1">Sign In</h4>
+                    <form method="POST" action='{% url "main:login" %}'>
+                            {% csrf_token %}
+                            {% if next_url %}
+                            <input type='hidden' name='next' value='{{ next_url }}' />
+                            {% endif %}
+                            {{ form |crispy}}
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                            </div> <!-- form-group// -->                                                           
+                    </form>
+                    </article>
+                </div> <!-- card.// -->
+        
+                
+        
+        
             </div>
+        
+        
+        
         </div>
-       
-    
-       
-    </div>
+
