@@ -1,0 +1,153 @@
+
+
+
+
+
+
+        {% if cart.products.exists %}
+          <div class="card">
+            <table class="table table-hover shopping-cart-wrap cart-table">
+              <thead class="text-muted">
+                <tr>
+          
+                  <th scope="col">Product</th>
+                  <th scope="col" width="120">Quantity</th>
+                  <th scope="col" width="120">Price</th>
+                  <th scope="col" width="200" class="text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class='cart-body'>
+              {% for product in cart.products.all %}
+                <tr class='cart-product'>
+                  <td>
+                    <figure class="media">
+                      <div class="img-wrap"><img src="{{ product.image.url }}" class="img-thumbnail img-sm"></div>
+                      <figcaption class="media-body">
+                        <a href='{{ product.get_absolute_url }}' ><h6 class="title text-truncate">{{ product.title }}</h6></a>
+                        <!-- <dl class="dlist-inline small">
+                          <dt>Size: </dt>
+                          <dd>XXL</dd>
+                        </dl>
+                        <dl class="dlist-inline small">
+                          <dt>Color: </dt>
+                          <dd>Orange color</dd>
+                        </dl> -->
+                      </figcaption>
+                    </figure>
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </td>
+                  <td>
+                    <div class="price-wrap">
+                      <var class="price"># {{ product.price }}</var>
+                      <small class="text-muted">(Naira each)</small>
+                    </div> <!-- price-wrap .// -->
+                  </td>
+                  <td class="text-right">
+                     <!-- <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist"> <i
+                        class="fa fa-heart"></i></a> -->
+                    <!-- <a href="" class="btn btn-outline-danger"> × Remove</a> -->
+                    {% include 'cart/snippet/remove-product.html' with product_id=product.id %}
+                   
+                  </td>
+                  
+                </tr>
+              {% endfor %}
+
+              
+                
+            </tbody>
+            </table>
+          </div> <!-- card.// -->
+         
+
+          <div class="container">
+            <table class="table cart-table">
+              <tbody class='cart-body'>
+                <tr>
+                    <td colspan="2"></td>
+                    <td><b>Subtotal</b>#<span class='cart-subtotal'>{{ cart.subtotal }}</span> </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td><b>Total</b> #<span class='cart-total'> {{ cart.total }}</span></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td><a class='btn btn-lg btn-success' href='{% url "cart:checkout" %}'>Checkout</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+            
+          
+          <div class='cart-item-remove-form' style='display:none'>
+
+            {% include 'cart/snippet/remove-product.html' %}
+          </div>
+
+          {% else %}
+            <p class='lead'>Cart is empty</p>
+          {% endif %}
+
+
+
+
+          <!-- jjjrrrrrrrrrrrrrrrrrrrrrrrrrr -->
+
+          {% if cart.products.exists %}
+      <table class="table cart-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+          </tr>
+        </thead>
+        <tbody class='cart-body'>
+          {% for product in cart.products.all %}
+          <tr class='cart-product'>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href='{{ product.get_absolute_url }}'>{{ product.title }}</a>
+
+
+              <!-- {% include 'products/snippet/update-cart.html' with product=product cart=cart in_cart=True %} -->
+              {% include 'cart/snippet/remove-product.html' with product_id=product.id %}
+            </td>
+            <td>{{ product.price }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="2"></td>
+            <td><b>Subtotal</b>$<span class='cart-subtotal'>{{ cart.subtotal }}</span> </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td><b>Total</b> $<span class='cart-total'> {{ cart.total }}</span></td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td><a class='btn btn-lg btn-success' href='{% url "cart:checkout" %}'>Checkout</a></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class='cart-item-remove-form' style='display:none'>
+
+        {% include 'cart/snippet/remove-product.html' %}
+      </div>
+
+      {% else %}
+      <p class='lead'>Cart is empty</p>
+      {% endif %}
+
+
+

@@ -55,7 +55,7 @@
                     <a class="d-flex justify-content-md-center" href="/">
                         <div class="brand-wrap">
                             <img class="logo" src="images/logo-dark.png">
-                            <h2 class="logo-text">LOGO</h2>
+                            <h2 class="logo-text">ZeeMart</h2>
                         </div> <!-- brand-wrap.// -->
                     </a>
                         
@@ -91,25 +91,26 @@
                         
                                     {% if user.is_authenticated %}
                                     
-                                        <div class="title text-muted icon-wrap dropdown">
-                                            
-                                              Hi {{request.user.first_name}}!
-                            
-                                            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                                                
-                                                <div class="dropdown-menu" aria-labelledby="dropdown07">
-                                                <a class="dropdown-item" href="{% url 'main:customer_profile' %}">My Profile</a>
-                                                <a class="dropdown-item" href="#">My orders</a>
-                                                
-                                                <a class="dropdown-item" href="#">Request List</a>
-                                                <div role="separator" class="divider"></div>
-                                                <a class="dropdown-item" href="{% url 'main:change_password' %}">Change Password</a>
-                                                <a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a>
-                                                </div>
-                                            
-                                           
-                                        </div>
-                                    </a>
+                                       
+
+                                    <div class="icontext mb-4">
+                                            <div class="icon-wrap"><i class="icon-sm round border border-primary text-primary fa fa-user"></i></div>
+                                            <div class="text-wrap dropdown">
+                                                <small>Hi </small>
+                                                <a href="#" class="b" data-toggle="dropdown" data-offset="20,10" aria-expanded="false"> 
+                                                    {{request.user.first_name}}! <i class="fa fa-caret-down"></i> 
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" style="min-width: 250px; position: absolute; transform: translate3d(-129px, -232px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="top-end">
+                                                    <a class="dropdown-item" href="{% url 'main:customer_profile' %}">My Profile</a>
+                                                    <a class="dropdown-item" href="#">My orders</a>
+                                                        
+                                                    <a class="dropdown-item" href="#">Request List</a>
+                                                    <div role="separator" class="divider"></div>
+                                                    <a class="dropdown-item" href="{% url 'main:change_password' %}">Change Password</a>
+                                                    <a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a>
+                                                </div> <!--  dropdown-menu .// -->
+                                            </div> <!-- text-wrap.// -->
+                                    </div> <!-- icontext.// -->
         
                                         <!-- <div> <a href="#">Profile</a> <span class="dark-transp"> | </span>
                                             <a href="#"> Logout</a>

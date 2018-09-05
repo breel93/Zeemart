@@ -14,41 +14,54 @@
 
             
             <div class='row  mb-3'>
-                    {% if query %}
+                    {% if query  %}
                         <div class='col-12' >
                             Results for <b>{{ query }}</b>
                             <hr/>
                         </div>
+                        
                     {% else %}
-            
-                        <div class='col-12 col-md-6 mx-auto py-5'>
-                            {% include 'search/snippet/search_form.html' %}
-                        </div>
+                        <!-- <div class='col-8 mx-auto'>
+                            
 
-                        <div class='col-12'>
-                            <hr>
-                        </div>
+                        </div> -->
                     {% endif %}
             </div>
             
             
             <div class='row no-gutter'>
-        
-                {% for obj in object_list %}
-                    <div class='col-lg-3 col-md-4 col-sm-6 col-6'>
+
+                {% if object_list %}
             
-                    {% include 'products/snippet/card.html' with instance=obj %}  
-                    
-                    {% if forloop.counter|divisibleby:5 %}
-                     </div> </div><div class='row'><div class='col-12'><hr/></div>
-                    {% elif forloop.counter|divisibleby:3 %}
-                        </div> </div><div class='row'><div class='col-12'><hr/></div>
-                    {% else %}
-                     </div>  
-                    {% endif %}
-                   
+        
+                    {% for obj in object_list %}
+                        <div class='col-lg-3 col-md-4 col-sm-6 col-6'>
                 
-                {% endfor %}
+                        {% include 'products/snippet/card.html' with instance=obj %}  
+                        
+                        {% if forloop.counter|divisibleby:5 %}
+                        </div> </div><div class='row'><div class='col-12'><hr/></div>
+                        {% elif forloop.counter|divisibleby:3 %}
+                            </div> </div><div class='row'><div class='col-12'><hr/></div>
+                        {% else %}
+                        </div>  
+                        {% endif %}
+                    
+                    
+                    {% endfor %}
+                {% else %}
+                    <div class='col-12 col-md-6 mx-auto py-5'>
+                        <h5>Ops!!! No result</h5>
+
+                        <hr>
+
+                        <img src="{% static 'images/banners/ops.jpg' %}"/>
+
+                        
+                    </div>
+                {% endif %}
+
+                
             </div>
 
         </div>

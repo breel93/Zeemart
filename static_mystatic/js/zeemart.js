@@ -50,7 +50,7 @@ $(document).ready(function(){
           if (data.added){
             submitSpan.html("In cart <button type='submit' class='btn btn-link btn-sm float-right'>Remove?</button>")
           } else {
-            submitSpan.html("<button type='submit' class='btn btn-primary btn-sm float-right'>Add to cart</button>")
+            submitSpan.html("<button type='submit' class='btn btn-outline-primary btn-sm float-right'>Add to cart</button>")
            }
           var navbarCount = $(".navbar-cart-count")
           navbarCount.text(data.cartItemCount)
@@ -94,8 +94,11 @@ $(document).ready(function(){
               newCartItemRemove.css("display", "block")
               // newCartItemRemove.removeClass("hidden-class")
               newCartItemRemove.find(".cart-item-product-id").val(value.id)
-                cartBody.prepend("<tr><th scope=\"row\">" + i + "</th><td><a href='" + value.url + "'>" + value.name + "</a>" + newCartItemRemove.html() + "</td><td>" + value.price + "</td></tr>")
+                cartBody.prepend("<tr><th>" + i + "</th><img src=" + value.image.url + "/><td><a href='" + value.url + "'>" + value.name + "</a>" + newCartItemRemove.html() + "</td><td>" + value.price + "</td></tr>")
                 i --
+
+                // cartBody.prepend("<tr><th scope=\"row\">" + i + "</th><td><a href='" + value.url + "'>" + value.name + "</a>" + newCartItemRemove.html() + "</td><td>" + value.price + "</td></tr>")
+                // i --
             })
             
             cartBody.find(".cart-subtotal").text(data.subtotal)
