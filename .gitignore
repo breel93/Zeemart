@@ -11,6 +11,7 @@
 bin/
 include/
 pip-selfcheck.json
+static_cdn/media_root/products/
 
 # Django related 
 
@@ -26,6 +27,8 @@ __pycache__/
 # C extensions
 *.so
 conf.py
+
+
 
 # Distribution / packaging
 .Python
