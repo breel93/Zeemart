@@ -170,7 +170,7 @@ LOGIN_REDIRECT_URL = '/'
 
 
 
-# from zeemart.aws.conf import *
+from zeemart.aws.conf import *
 
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
