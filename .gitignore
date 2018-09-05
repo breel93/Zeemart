@@ -16,7 +16,7 @@ static_cdn/media_root/products/
 # Django related 
 
 # src/<yourproject>/settings/local.py
-# static-cdn/  # any collected static files 
+# static-cdn/  # any collected static files ..
 
 
 # Byte-compiled / optimized / DLL files
