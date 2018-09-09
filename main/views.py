@@ -21,7 +21,6 @@ class IndexView(TemplateView):
         
         category      = Category.objects.all()[:7]
         subcategory   = SubCategory.objects.all()
-        print(subcategory)
         context = { 'category':category, 'subcategory': subcategory}
         return context
 
