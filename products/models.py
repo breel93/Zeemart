@@ -131,7 +131,7 @@ class Product(models.Model):
     featured    = models.BooleanField(default=False)
     active      = models.BooleanField(default=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
-    category    = models.ForeignKey(Category, related_name='Category', blank=True, on_delete=models.CASCADE)
+    category    = models.ForeignKey(Category, default=1, related_name='Category', blank=True, on_delete=models.CASCADE)
     subcategory    = models.ForeignKey(SubCategory, related_name='SubCategory',default=1, blank=True, on_delete=models.CASCADE)
     
 
