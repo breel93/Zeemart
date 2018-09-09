@@ -18,6 +18,7 @@ def cart_detail_api_view(request):
     products = [{
             "id": x.id,
             "url": x.get_absolute_url(),
+            "image": x.image.url,
             "name": x.name, 
             "price": x.price
             } 

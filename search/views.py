@@ -11,7 +11,7 @@ class SearchProductListView(ListView):
     # queryset = Product.objects.all()
     template_name = "search/search_list.html"
 
-    def  get_context_data(self, *args, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         context = super(SearchProductListView, self).get_context_data(*args, **kwargs)
         query = self.request.GET.get('q')
         context['query'] = query
@@ -30,3 +30,9 @@ class SearchProductListView(ListView):
         __icontains = field contains this
         __iexact = fields is exactly this
         '''
+
+# class CategoryListView(ListView):
+#     template_name = "search/category_list.html"     
+
+#     def get_context_data(self,*args, **kwargs):
+#         con

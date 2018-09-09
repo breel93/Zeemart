@@ -14,7 +14,27 @@
                         <aside class="col-md-2">
                             <h5 class="text-uppercase">Category</h5>
                             <ul class="menu-category list-dots">
-                                <li>
+                                
+                                {% for item in category %}
+                                    <li class="dropdown">
+                                        <a class="get-subcategory" href="{{ item.get_category_url }}">{{ item.title }}</a>
+                                        <div class="dropdown-content" style="left:100;">
+                                            {% for sub in subcategory %}
+                                                {% if item == sub.category %}
+                                                    <a href="{{ sub.get_subcategory_url }}">{{ sub.title }}</a>
+                                                {% endif %}
+                                                
+                                           
+                                            {% endfor %}
+                                            
+      
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                               
+                                
+                                <!-- <li>
                                     <a href="#">Women Fashion </a>
                                 </li>
                                 <li>
@@ -31,7 +51,7 @@
                                 </li>
                                 <li>
                                     <a href="#">Other Category</a>
-                                </li>
+                                </li> -->
                             </ul>
 
                         </aside>

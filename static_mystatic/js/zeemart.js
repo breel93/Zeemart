@@ -68,6 +68,8 @@ $(document).ready(function(){
         }
       })
   })
+
+
   function refreshCart(){
     console.log("in current cart")
     var cartTable = $(".cart-table")
@@ -94,11 +96,13 @@ $(document).ready(function(){
               newCartItemRemove.css("display", "block")
               // newCartItemRemove.removeClass("hidden-class")
               newCartItemRemove.find(".cart-item-product-id").val(value.id)
-                cartBody.prepend("<tr><th>" + i + "</th><img src=" + value.image.url + "/><td><a href='" + value.url + "'>" + value.name + "</a>" + newCartItemRemove.html() + "</td><td>" + value.price + "</td></tr>")
+               
+                  
+                   
+                cartBody.prepend("<tr><td><figure class='media'> <div class='img-wrap'><img src=' + value.image +' class='img-thumbnail img-sm'> </div><figcaption> <a href='" + value.url + "'>" + value.name + "</a></figcaption></figure></td>  <td><select class='form-control'><option>1</option><option>2</option><option>3</option><option>4</option></td>  <td><div class='price-wrap'><var class='price'> ₦ "+value.price+ "</var> <small class='text-muted'>(Naira each)</small></div></td> <td class='text-right' >"+  newCartItemRemove.html() +"</td> </tr>")
                 i --
 
-                // cartBody.prepend("<tr><th scope=\"row\">" + i + "</th><td><a href='" + value.url + "'>" + value.name + "</a>" + newCartItemRemove.html() + "</td><td>" + value.price + "</td></tr>")
-                // i --
+                // <div class="img-wrap"><img src="{{ product.image.url }}" class="img-thumbnail img-sm"></div>
             })
             
             cartBody.find(".cart-subtotal").text(data.subtotal)
@@ -117,4 +121,10 @@ $(document).ready(function(){
       }
     })
   }
+
+  $("#get-subcategory").mouseover(function () {
+    $("#subcategory-drop").slideDown('slow');
+  })
+
+
 })

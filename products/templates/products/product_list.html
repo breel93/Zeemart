@@ -9,32 +9,24 @@
 
    {% block content %}
 
-        <div class="container">
 
-            
+    <section class="section-main bg padding-y-sm">
+
+            <div class="container">
+
+                
                 <div class="row">
-                    
+                        
                     {% for obj in object_list %}
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            {{ forloop.counter }}
-                                {% include 'products/snippet/card.html' with instance=obj %}
-                                {% if forloop.counter|divisibleby:3 %}
-                            </div> </div><div class='row'><div class='col-12'><hr/></div>
-                           {% elif forloop.counter|divisibleby:2 %}
-                               </div> </div><div class='row'><div class='col-12'><hr/></div>
-                           {% else %}
-                              
-                           {% endif %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            {% include 'products/snippet/card.html' with instance=obj %}
                         </div>
 
                     {% endfor %}
                   
-
-                </div>
-            
-
-               
-        </div>
+                </div>     
+            </div>
+    </section>
 
         
     {% endblock %}

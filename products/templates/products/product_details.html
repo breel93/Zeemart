@@ -30,7 +30,8 @@
                             <div class="img-big-wrap">
                                 <div> <a href="images/items/1.jpg" data-fancybox="">
                                         {% if object.image %}
-                                        <img src='{{ object.image.url }}' /> {% endif %}
+                                            <img src='{{ object.image.url }}' /> 
+                                        {% endif %}
                                     </a></div>
                             </div> <!-- slider-product.// -->
                             <div class="img-small-wrap">
@@ -48,7 +49,7 @@
 
                             <div class="mb-3">
                                 <var class="price h3 text-warning">
-                                    <span class="currency">#</span><span class="num">{{ object.price }}</span>
+                                    <span class="currency">₦</span><span class="num">{{ object.price }}</span>
                                 </var>
                                 <span>/per kg</span>
                             </div> <!-- price-detail-wrap .// -->
@@ -147,7 +148,7 @@
                             <figcaption class="info-wrap">
                                 <a href="#" class="title">The name of product</a>
                                 <div class="price-wrap mb-3">
-                                    <span class="price-new">$280</span> <del class="price-old">$280</del>
+                                    <span class="price-new">₦280</span> <del class="price-old">$280</del>
                                 </div> <!-- price-wrap.// -->
                             </figcaption>
                         </figure> <!-- card-product // -->

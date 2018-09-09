@@ -22,7 +22,7 @@ app_name = 'main'
 
 urlpatterns =[
     url(r'^$', IndexView.as_view(), name='index'),
-
+  
     # url(r'^login/$',login,{'template_name':'main/login.html'},name='login'),
 
     url(r'^login/$',LoginView.as_view(),name='login'),

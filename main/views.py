@@ -9,12 +9,40 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash, authenticate, login
 from .forms import RegistrationForm, UpdateCustomerForm,UpdateCustomerFormTwo,LoginForm
 from .signals import user_logged_in
+from products.models import Category, SubCategory
 # Create your views here.
 # def home_page(request):
 #     return render(request, "home_page.html", {})
 
 class IndexView(TemplateView):
     template_name = 'main/index.html'
+
+    def get_context_data(self,*args, **kwargs):
+        
+        category      = Category.objects.all()[:7]
+        subcategory   = SubCategory.objects.all()
+        print(subcategory)
+        context = { 'category':category, 'subcategory': subcategory}
+        return context
+
+# def subcategory_list(request, slug):
+#     subcategory   = SubCategory.objects.filter(category__slug=slug)
+#     print(subcategory)
+#     # category      = Category.objects.all()[:7]
+#     context = {'subcategory': subcategory}
+#     return render(request,'main/index.html', context)
+
+
+def subcategory_list(request, slug):
+    subcategory   = SubCategory.objects.filter(category__slug=slug)
+    print(subcategory)
+    # category      = Category.objects.all()[:7]
+    context = {'subcategory': subcategory}
+    return render(request,'main/index.html', context)
+
+    
+
+
 
 def register(request):
     if request.method == "POST":
