@@ -14,23 +14,26 @@
                         <aside class="col-md-2">
                             <h5 class="text-uppercase">Category</h5>
                             <ul class="menu-category list-dots">
-                                
-                                {% for item in category %}
-                                    <li class="dropdown">
-                                        <a class="get-subcategory" href="{{ item.get_category_url }}">{{ item.title }}</a>
-                                        <div class="dropdown-content" style="left:100;">
-                                            {% for sub in subcategory %}
-                                                {% if item == sub.category %}
-                                                    <a href="{{ sub.get_subcategory_url }}">{{ sub.title }}</a>
+                                {% if category %}
+                                    {% for item in category %}
+                                        <li class="dropdown">
+                                            <a class="get-subcategory" href="{{ item.get_category_url }}">{{ item.title }}</a>
+                                            <div class="dropdown-content" style="left:100;">
+                                                {% if subcategory %}
+                                                    {% for sub in subcategory %}
+                                                        {% if item == sub.category %}
+                                                            <a href="{{ sub.get_subcategory_url }}">{{ sub.title }}</a>
+                                                        {% endif %}
+                                                        
+                                                
+                                                    {% endfor %}
                                                 {% endif %}
                                                 
-                                           
-                                            {% endfor %}
-                                            
-      
-                                        </div>
-                                    </li>
-                                {% endfor %}
+        
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
 
                                
                                 

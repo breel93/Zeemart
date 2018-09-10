@@ -28,11 +28,13 @@
                         </div>
                         <div class="col-md-9">
                             <div class="row">
-                                {% for sub_category in sub_category %}
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
-                                        <a href="{{ sub_category.get_subcategory_url }}">{{ sub_category.title }} </a>
-                                    </div>
-                                {% endfor %}
+                                {% if sub_category %}
+                                    {% for sub_category in sub_category %}
+                                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 text-center">
+                                            <a href="{{ sub_category.get_subcategory_url }}">{{ sub_category.title }} </a>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -46,11 +48,13 @@
 
                         
                 
-                    {% for product in category %}
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            {% include 'products/snippet/card.html' with instance=product %}
-                        </div>
-                    {% endfor %}
+                    {% if category %}
+                        {% for product in category %}
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                                {% include 'products/snippet/card.html' with instance=product %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
    
                   
                 </div>     
