@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'analytics',
     'marketing',
 
-    #third party
+    #third party..
     'crispy_forms',
     'storages',
     
