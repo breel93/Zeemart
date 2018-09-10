@@ -64,7 +64,7 @@ pre_save.connect(category_pre_save_receiver, sender=Category)
 class SubCategory(models.Model):
     title        = models.CharField(max_length=120, blank=True, unique=True)
     slug         = models.SlugField(blank=True,unique=True)
-    category     = models.ForeignKey(Category,default=1, blank=True, null=True, on_delete=models.CASCADE)
+    category     = models.ForeignKey(Category,default="", blank=True, null=True, on_delete=models.CASCADE)
 
     def get_subcategory_url(self):
         return reverse("product:subcategory-detail", kwargs={"slug": self.category, "sub_slug": self.slug })
