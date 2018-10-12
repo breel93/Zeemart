@@ -1,0 +1,30 @@
+
+
+    <div class="col-md-2">
+        <figure class="card card-product">
+            <div class="img-wrap">
+                <a href="{{ instance.get_absolute_url }}">
+                {% if instance.image %}
+                    <img src="{{instance.image.url}}" alt="{{ instance.title }} logo"> 
+                {% endif %}
+            </div>
+            <figcaption class="info-wrap">
+                <h6 class="title ">
+                    <a href="{{ instance.get_absolute_url }}">{{instance.title}}</a>
+                </h6>
+
+                <div class="price-wrap">
+                    <span class="price-new">₦{{instance.price}}</span>
+                    {% if instance.old_price and instance.old_price > instance.price %}
+                        <del class="price-old">₦{{instance.old_price}}</del>
+                    {% endif %}
+                <!-- price-wrap.// -->
+
+            </figcaption>
+        </figure>
+        <!-- card // -->
+    </div>
+
+
+        
+          

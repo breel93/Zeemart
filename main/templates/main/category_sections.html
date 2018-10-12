@@ -1,0 +1,49 @@
+{% if category %}
+    {% for item in category %}
+
+        <section class="section-content padding-y-sm bg">
+            <div class="container">
+
+                <header class="section-heading heading-line">
+                    <h4 class="title-section bg">{{ item.title }}</h4>
+                </header>
+
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <div class="card-banner align-items-end" {% if item.image %}  style="height:295px; background-image: url('{{item.image.url}}'); border-radius:0;" {% endif %}>
+                                
+                                    <article class="overlay m-4 w-100">
+                                        <h5 class="card-title">{{ item.title }}</h5>
+                                        <a href="{{ item.get_category_url }}" class="btn btn-primary btn-sm"> View more </a>
+                                    </article>
+                            </div> <!-- card.// -->
+                        </div>
+                        <!-- col.// -->
+                        <div class="col-md-9">
+                            <ul class="row no-gutters border-cols">
+                            {% if subcategory %}
+                                {% for sub in subcategory %}
+                                    {% if item == sub.category %}
+                                        
+                                            {% include 'main/snippet/categories_small_card.html' %}
+                                        
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            
+                            </ul>
+                        </div>
+                        <!-- col.// -->
+                    </div>
+                    <!-- row.// -->
+
+                </div>
+                <!-- card.// -->
+
+            </div>
+            <!-- container .//  -->
+        </section>
+    {% endfor %}
+
+{% endif %}

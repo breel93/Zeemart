@@ -1,5 +1,5 @@
 
-<div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-6">
   <figure class="card card-product">
     <div class="img-wrap">
       <a href="{{ instance.get_absolute_url }}">
@@ -7,15 +7,16 @@
         <img src="{{instance.image.url}}" alt="{{ instance.title }} logo"> {% endif %}
     </div>
     <figcaption class="info-wrap">
-      <a href="#" class="title">{{instance.title}}</a>
+      <a href="{{ instance.get_absolute_url }}" class="title">{{instance.title}}</a>
       <div class="action-wrap">
           {% include 'products/snippet/update-cart.html' with product=instance cart=cart %}
         <div class="price-wrap h5">
           <span class="price-new">₦{{instance.price}}</span>
+          {% if instance.old_price and instance.old_price > instance.price %}
+            <del class="price-old">₦{{instance.old_price}}</del>
+          {% endif %}
         </div> <!-- price-wrap.// -->
       </div> <!-- action-wrap -->
     </figcaption>
   </figure> <!-- card // -->
-</div> <!-- col // -->
-  
-    
+</div>

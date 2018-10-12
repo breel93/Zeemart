@@ -70,6 +70,7 @@ $(document).ready(function(){
   })
 
 
+
   function refreshCart(){
     console.log("in current cart")
     var cartTable = $(".cart-table")
@@ -122,9 +123,15 @@ $(document).ready(function(){
     })
   }
 
-  $("#get-subcategory").mouseover(function () {
-    $("#subcategory-drop").slideDown('slow');
-  })
+  var infinite = new Waypoint.Infinite({
+    element: $('.infinite-container')[0],
+    onBeforePageLoad: function () {
+      $('.loading').show();
+    },
+    onAfterPageLoad: function ($items) {
+      $('.loading').hide();
+    }
+  });
 
 
 })

@@ -37,6 +37,7 @@ def upload_image_path(instance, filename):
 class Category(models.Model):
     title        = models.CharField(max_length=120, blank=True, unique=True)
     slug         = models.SlugField(blank=True,unique=True)
+    image       = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def get_category_url(self):
         return reverse("product:category-detail", kwargs={"slug": self.slug})
@@ -65,6 +66,7 @@ class SubCategory(models.Model):
     title        = models.CharField(max_length=120, blank=True, unique=True)
     slug         = models.SlugField(blank=True,unique=True)
     category     = models.ForeignKey(Category,default="", blank=True, null=True, on_delete=models.CASCADE)
+    image       = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def get_subcategory_url(self):
         return reverse("product:subcategory-detail", kwargs={"slug": self.category, "sub_slug": self.slug })
@@ -81,6 +83,31 @@ def subcategory_pre_save_receiver(sender, instance, *args, **kwargs):
         instance.slug = unique_slug_generator(instance)
 
 pre_save.connect(subcategory_pre_save_receiver, sender=SubCategory) 
+
+#  sub-subcategory
+class SubSubCategory(models.Model):
+    title        = models.CharField(max_length=120, blank=True, unique=True)
+    slug         = models.SlugField(blank=True,unique=True)
+    category     = models.ForeignKey(Category,default="", blank=True, null=True, on_delete=models.CASCADE)
+    subcategory  = models.ForeignKey(SubCategory,default="", blank=True, null=True, on_delete=models.CASCADE)
+    image        = models.ImageField(upload_to='products/', null=True, blank=True)
+
+
+    def get_subsubcategory_url(self):
+        return reverse("product:subsubcategory-detail", kwargs={"slug": self.category, "sub_slug": self.subcategory ,"subsub_slug":self.slug })
+    
+    def __str__(self):
+        return self.slug
+    
+    class Meta:
+        verbose_name = 'SubSubCategory'
+        verbose_name_plural = 'SubSubCategories'
+    
+def subsubcategory_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+pre_save.connect(subsubcategory_pre_save_receiver, sender=SubSubCategory) 
 
 
 
@@ -126,13 +153,15 @@ class Product(models.Model):
     title       = models.CharField(max_length=120)
     slug        = models.SlugField(blank=True, unique=True)
     description = models.TextField()
-    price       = models.DecimalField(decimal_places = 2, max_digits=20,default=0.00)
+    price       = models.DecimalField(decimal_places = 0, max_digits=10,default=0.00)
+    old_price   = models.DecimalField(decimal_places = 0, max_digits=10, default=0.00, null=True, blank=True)
     image       = models.ImageField(upload_to='products/', null=True, blank=True)
     featured    = models.BooleanField(default=False)
     active      = models.BooleanField(default=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
     category    = models.ForeignKey(Category, default="", related_name='Category', blank=True, null=True, on_delete=models.CASCADE)
     subcategory    = models.ForeignKey(SubCategory,default="", related_name='SubCategory', blank=True, null=True, on_delete=models.CASCADE)
+    subsubcategory    = models.ForeignKey(SubSubCategory,default="", related_name='SubSubCategory', blank=True, null=True, on_delete=models.CASCADE)
     
 
   
@@ -162,9 +191,11 @@ def product_pre_save_receiver(sender, instance, *args, **kwargs):
 
 pre_save.connect(product_pre_save_receiver, sender=Product)
 
-class ProductImage(models.Model):
+class MoreImages(models.Model):
     # user = models.ForeignKey(User)
-    property = models.ForeignKey(Product, related_name='images')
+    product = models.ForeignKey(Product, related_name='images')
     image = models.ImageField(upload_to='products/', null=True, blank=True)
 
-
+    class Meta:
+        verbose_name = 'MoreImage'
+        verbose_name_plural = 'MoreImages'

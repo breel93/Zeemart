@@ -12,10 +12,11 @@
 <div class="container">
     <nav class="mb-3">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category name</a></li>
-            <li class="breadcrumb-item"><a href="#">Sub category</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Items</li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            
+            <li class="breadcrumb-item"><a href="{{ object.get_category_url }}">{{ object.category.title }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ object.get_subcategory_url }}">{{ object.subcategory.title }} </a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{object.title}}</li>
         </ol>
     </nav>
 
@@ -34,12 +35,15 @@
                                         {% endif %}
                                     </a></div>
                             </div> <!-- slider-product.// -->
-                            <div class="img-small-wrap">
-                                <div class="item-gallery"> <img src="images/items/1.jpg"></div>
-                                <div class="item-gallery"> <img src="images/items/2.jpg"></div>
-                                <div class="item-gallery"> <img src="images/items/3.jpg"></div>
-                                <div class="item-gallery"> <img src="images/items/4.jpg"></div>
-                            </div> <!-- slider-nav.// -->
+                            
+                            {% if object.moreimages %}
+                                <div class="img-small-wrap">
+                                    <div class="item-gallery"> <img src="images/items/1.jpg"></div>
+                                    <div class="item-gallery"> <img src="images/items/2.jpg"></div>
+                                    <div class="item-gallery"> <img src="images/items/3.jpg"></div>
+                                    <div class="item-gallery"> <img src="images/items/4.jpg"></div>
+                                </div> <!-- slider-nav.// -->
+                            {% endif %}
                         </article> <!-- gallery-wrap .end// -->
                     </aside>
                     <aside class="col-sm-6">
@@ -48,10 +52,10 @@
                             <h3 class="title mb-3">{{ object.title }}</h3>
 
                             <div class="mb-3">
-                                <var class="price h3 text-warning">
+                                <var class="price h3 text-primary">
                                     <span class="currency">₦</span><span class="num">{{ object.price }}</span>
                                 </var>
-                                <span>/per kg</span>
+                                <!-- <span>/per kg</span> -->
                             </div> <!-- price-detail-wrap .// -->
                             <dl>
                                 <dt>Description</dt>
@@ -59,7 +63,7 @@
                                     <p>{{ object.description| linebreaks }}</p>
                                 </dd>
                             </dl>
-                            <dl class="row">
+                            <!-- <dl class="row">
                                 <dt class="col-sm-3">Model#</dt>
                                 <dd class="col-sm-9">12345611</dd>
 
@@ -68,8 +72,8 @@
 
                                 <dt class="col-sm-3">Delivery</dt>
                                 <dd class="col-sm-9">Russia, USA, and Europe </dd>
-                            </dl>
-                            <div class="rating-wrap">
+                            </dl> -->
+                            <!-- <div class="rating-wrap">
 
                                 <ul class="rating-stars">
                                     <li style="width:80%" class="stars-active">
@@ -85,7 +89,7 @@
                                 </ul>
                                 <div class="label-rating">132 reviews</div>
                                 <div class="label-rating">154 orders </div>
-                            </div> <!-- rating-wrap.// -->
+                            </div> rating-wrap.// -->
                             <hr>
                             <div class="row">
                                 <div class="col-sm-5">
@@ -101,23 +105,16 @@
                                     </dl> <!-- item-property .// -->
                                 </div> <!-- col.// -->
                                 <div class="col-sm-7">
-                                    <dl class="dlist-inline">
+                                    <!-- <dl class="dlist-inline">
                                         <dt>Size: </dt>
                                         <dd>
                                             <label class="form-check form-check-inline">
                                                 <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
                                                 <span class="form-check-label">SM</span>
                                             </label>
-                                            <label class="form-check form-check-inline">
-                                                <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
-                                                <span class="form-check-label">MD</span>
-                                            </label>
-                                            <label class="form-check form-check-inline">
-                                                <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
-                                                <span class="form-check-label">XXL</span>
-                                            </label>
+                                            
                                         </dd>
-                                    </dl> <!-- item-property .// -->
+                                    </dl> item-property .// -->
                                 </div> <!-- col.// -->
                             </div> <!-- row.// -->
                             <hr>
@@ -142,39 +139,24 @@
                     You may like
                 </div>
                 <div class="card-body row">
-                    <div class="col-md-12 col-sm-3">
-                        <figure class="item border-bottom mb-3">
-                            <a href="#" class="img-wrap"> <img src="images/items/2.jpg" class="img-md"></a>
-                            <figcaption class="info-wrap">
-                                <a href="#" class="title">The name of product</a>
-                                <div class="price-wrap mb-3">
-                                    <span class="price-new">₦280</span> <del class="price-old">$280</del>
-                                </div> <!-- price-wrap.// -->
-                            </figcaption>
-                        </figure> <!-- card-product // -->
-                    </div> <!-- col.// -->
-                    <div class="col-md-12 col-sm-3">
-                        <figure class="item border-bottom mb-3">
-                            <a class="img-wrap"> <img src="images/items/3.jpg" class="img-md"></a>
-                            <figcaption class="info-wrap">
-                                <a href="#" href="#" class="title">The name of product</a>
-                                <div class="price-wrap mb-3">
-                                    <span class="price-new">$280</span>
-                                </div> <!-- price-wrap.// -->
-                            </figcaption>
-                        </figure> <!-- card-product // -->
-                    </div> <!-- col.// -->
-                    <div class="col-md-12 col-sm-3">
-                        <figure class="item border-bottom mb-3">
-                            <a href="#" class="img-wrap"> <img src="images/items/4.jpg" class="img-md"></a>
-                            <figcaption class="info-wrap">
-                                <a href="#" class="title">The name of product</a>
-                                <div class="price-wrap mb-3">
-                                    <span class="price-new">$280</span>
-                                </div> <!-- price-wrap.// -->
-                            </figcaption>
-                        </figure> <!-- card-product // -->
-                    </div> <!-- col.// -->
+                    {% if featured_product %}
+                        <!-- <div class="col-md-12 col-sm-3">
+                            <figure class="item border-bottom mb-3">
+                                <a href="#" class="img-wrap"> <img src="images/items/2.jpg" class="img-md"></a>
+                                <figcaption class="info-wrap">
+                                    <a href="#" class="title">The name of product</a>
+                                    <div class="price-wrap mb-3">
+                                        <span class="price-new">₦280</span> <del class="price-old">$280</del>
+                                    </div> 
+                                </figcaption>
+                            </figure> 
+                        </div>  -->
+                        {% for product in featured_product %}
+                            {% include 'products/snippet/featured_small_card.html' with instance=product %}
+                        {% endfor %}
+                        
+                    {% endif %}
+                    
                 </div> <!-- card-body.// -->
             </div> <!-- card.// -->
         </aside> <!-- col // -->

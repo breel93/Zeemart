@@ -9,7 +9,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash, authenticate, login
 from .forms import RegistrationForm, UpdateCustomerForm,UpdateCustomerFormTwo,LoginForm
 from .signals import user_logged_in
-from products.models import Category, SubCategory
+from products.models import Category, SubCategory,SubSubCategory, Product
 # Create your views here.
 # def home_page(request):
 #     return render(request, "home_page.html", {})
@@ -18,10 +18,14 @@ class IndexView(TemplateView):
     template_name = 'main/index.html'
 
     def get_context_data(self,*args, **kwargs):
-        
         category      = Category.objects.all()[:7]
         subcategory   = SubCategory.objects.all()
-        context = { 'category':category, 'subcategory': subcategory}
+        subsubcategory  = SubSubCategory.objects.all()
+        featured_product = Product.objects.filter(featured = True)[:12]
+        context = { 'category':category,
+                'subcategory': subcategory,
+                'subsubcategory': subsubcategory,
+                'featured_product': featured_product }
         return context
 
 # def subcategory_list(request, slug):

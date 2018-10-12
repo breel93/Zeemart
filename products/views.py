@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Category, SubCategory
+from .models import Product, Category, SubCategory, SubSubCategory
 from cart.models import Cart
 from analytics.mixin import ObjectViewedMixin
 
@@ -33,7 +33,9 @@ class ProductFeaturedDetailView(ObjectViewedMixin, DetailView):
 
 class ProductListView(ListView):
     queryset = Product.objects.all()
+    paginate_by = 20
     template_name = "products/product_list.html"
+    
 
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
@@ -69,7 +71,9 @@ class ProductDetailSlugView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+        featured_product = Product.objects.filter(featured = True)[:3]
         context['cart'] = cart_obj
+        context['featured_product'] = featured_product
         return context
 
     def get_object(self, *args, **kwargs):
@@ -119,8 +123,6 @@ class ProductCategoryListView(ListView):
 def get_category(request, slug):
     category_name = Product.objects.filter(category__slug=slug)
     subcategory_name = SubCategory.objects.filter(category__slug=slug)
-    print(category_name)
-    print(subcategory_name)
     queryset   = Category.objects.filter(slug = category_name)
     context = {'category' : category_name, 'sub_category':subcategory_name}
     return render(request,'products/product_category_detailview.html', context)
@@ -128,7 +130,13 @@ def get_category(request, slug):
 
 def get_sub_category(request, slug, sub_slug):
     sub_category_product = Product.objects.filter(category__slug=slug, subcategory__slug = sub_slug)
-    subcategory_name = SubCategory.objects.filter(category__slug=slug)
+    subcategory_name = SubSubCategory.objects.filter(category__slug=slug, subcategory__slug = sub_slug)
     context = {  'sub_category_product' : sub_category_product , 'subcategory_name' : subcategory_name}
     return render(request, 'products/product_subcategory_detailview.html',context)
 
+
+def get_sub_sub_category(request, slug, sub_slug, subsub_slug):
+    subsub_category_product = Product.objects.filter(category__slug=slug, subcategory__slug = sub_slug, subsubcategory__slug = subsub_slug)
+    subcategory_name = SubCategory.objects.filter(category__slug=slug)
+    context = {  'subsub_category_product' : subsub_category_product , 'subcategory_name' : subcategory_name}
+    return render(request, 'products/product_subsubcategory_detailview.html',context)

@@ -13,63 +13,91 @@
                     <div class="row row-sm">
                         <aside class="col-md-2">
                             <h5 class="text-uppercase">Category</h5>
-                            <ul class="menu-category list-dots">
-                                {% if category %}
-                                    {% for item in category %}
-                                        <li class="dropdown">
-                                            <a class="get-subcategory" href="{{ item.get_category_url }}">{{ item.title }}</a>
-                                            <div class="dropdown-content" style="left:100;">
-                                                {% if subcategory %}
-                                                    {% for sub in subcategory %}
-                                                        {% if item == sub.category %}
-                                                            <a href="{{ sub.get_subcategory_url }}">{{ sub.title }}</a>
-                                                        {% endif %}
-                                                        
-                                                
-                                                    {% endfor %}
-                                                {% endif %}
-                                                
-        
+                            <ul class="menu-category list-dots" id="pauser">
+                                           
+
+                            {% if category %}
+                                {% for item in category %}
+                                    <li class="dropdown">
+                                        <a class="get-subcategory" href="{{ item.get_category_url }}">{{ item.title }}</a>
+
+                                        <div class="dropdown-content" id="category_list" >
+                                            <div class="row" >
+                                                <div class="col-md-9">
+                                                        <ul>
+                                                                {% if subcategory %}
+                                                                
+                                                                    {% for sub in subcategory %}
+                                                                        {% if item == sub.category %}
+                                                                            
+                                                                        
+                                                                            <li id="subcategory_list">
+                                                                                <a href="{{ sub.get_subcategory_url }}">{{ sub.title }}</a>    
+                                                                                
+                                                                                    <ul class="list-group list-group-flush">
+                                                                                       
+                                                                                        {% if subsubcategory %}
+                                                                                            {% for subsub in subsubcategory %}
+                                                                                                {% if item == sub.category and sub == subsub.subcategory %}
+                                                                                                    <li class="list-group-item list-group-item-light py-0"> 
+                                                                                                        <a href="{{ subsub.get_subsubcategory_url }}">{{ subsub.title }}</a>
+                                                                                                    </li>
+                                                                                                {% endif %}
+                                                                                            {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </ul>
+
+                                                                                
+                                                                            </li>
+                                                                              
+                                                                       
+                                                                        
+                
+                                                                        {% endif %}
+                                                                
+                                                                    {% endfor %}
+                                                              
+                                                                
+                                                                {% endif %}
+                                                        </ul>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {% if item.image %}
+                                                        <div class="card-banner">
+                                                            <div class="card-body" style="height:250px; background-image: url('{{ item.image.url }}');"> </div>
+                                                            
+                                                        </div> <!-- card.// -->
+                                                    {% endif %}
+      
+
+                                                </div>
+
                                             </div>
-                                        </li>
-                                    {% endfor %}
-                                {% endif %}
+                                            
+                                            
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
 
                                
                                 
-                                <!-- <li>
-                                    <a href="#">Women Fashion </a>
-                                </li>
-                                <li>
-                                    <a href="#">Men Fasion </a>
-                                </li>
-                                <li>
-                                    <a href="#">Electronics </a>
-                                </li>
-                                <li>
-                                    <a href="#">Computer and Accessories </a>
-                                </li>
-                                <li>
-                                    <a href="#">Phones and Tablets </a>
-                                </li>
-                                <li>
-                                    <a href="#">Other Category</a>
-                                </li> -->
+                                
                             </ul>
 
                         </aside>
                         <!-- col.// -->
                         <div class="col-md-8">
-
-                            
+                                
 
                             <div id="slideshow" class="cycle-slideshow"
 
                                 data-cycle-fx="fade"
                                 data-cycle-manual-fx="scrollHorz"
-                                data-cycle-speed="600"
-                                data-cycle-timeout="3000"
+                                data-cycle-speed="400"
+                                data-cycle-timeout="1000"
                                 data-cycle-next="#next"
+                                data-cycle-pause-on-hover="#pauser"
                                 data-cycle-prev="#prev">
                                 <img src="{% static 'images/banners/banner1.jpg' %}">
                                 <img src="{% static 'images/banners/banner2.jpg' %}">
@@ -82,30 +110,31 @@
                         <!-- col.// -->
                         <aside class="col-md-2">
 
-                            <h6 class="title-bg bg-secondary"> Qualified Suppliers</h6>
+                            <h6 class="title-bg bg-secondary"> Quick Shopping</h6>
                             <div style="height:280px;">
-                                <figure class="itemside has-bg border-bottom" style="height: 33%;">
-                                    <img class="img-bg" src="images/items/item-sm.png">
-                                    <figcaption class="p-2">
-                                        <h6 class="title">One request, many offers </h6>
-                                        <a href="#">Good link</a>
-                                    </figcaption>
-                                </figure>
-
-                                <figure class="itemside has-bg border-bottom" style="height: 33%;">
-                                    <img class="img-bg" src="images/items/1.jpg" height="80">
-                                    <figcaption class="p-2">
-                                        <h6 class="title">One request, many offers </h6>
-                                        <a href="#">Good link</a>
-                                    </figcaption>
-                                </figure>
-                                <figure class="itemside has-bg border-bottom" style="height: 33%;">
-                                    <img class="img-bg" src="images/items/2.jpg" height="80">
-                                    <figcaption class="p-2">
-                                        <h6 class="title">One request, many offers </h6>
-                                        <a href="#">Good link</a>
-                                    </figcaption>
-                                </figure>
+                                <a href="#">
+                                    <div class="card-banner" style="height:110px; background-image: url('static/images/banners/bottom1.jpg');border-radius:0;">
+                                                <!-- <article class="overlay top text-center">
+                                                    <h5 class="title mb-0">Some text for title</h5>
+                                                </article> -->
+                                    </div> <!-- card.// -->
+                                </a>
+                                <a href="#">
+                                    <div class="card-banner" style="height:110px; background-image: url('static/images/banners/b7.jpg'); border-radius:0;">
+                                    
+                                        <!-- <article class="overlay top text-center">
+                                            <h5 class="title mb-0">Some text for title</h5>
+                                        </article> -->
+                                    </div> <!-- card.// -->
+                                </a>
+                                <a href="#">
+                                    <div class="card-banner" style="height:110px; background-image: url('static/images/banners/b6.jpg');border-radius:0;">
+                                        <!-- <article class="overlay top text-center">
+                                            <h5 class="title mb-0">Some text for title</h5>
+                                        </article> -->
+                                    </div> <!-- card.// -->
+                                </a>
+                                
                             </div>
 
                         </aside>
@@ -116,228 +145,24 @@
             </div>
             <!-- card.// -->
 
-            <figure class="mt-3 banner p-3 bg-secondary">
+            <!-- <figure class="mt-3 banner p-3 bg-secondary">
                 <div class="text-lg text-center white">Useful banner can be here</div>
-            </figure>
+            </figure> -->
 
         </div>
         <!-- container .//  -->
     </section>
     <!-- ========================= SECTION MAIN END// ========================= -->
 
+    
+   
 
     <!-- ========================= SECTION CONTENT ========================= -->
-    <section class="section-content padding-y-sm bg">
-        <div class="container">
-
-            <header class="section-heading heading-line">
-                <h4 class="title-section bg">MACHINERY</h4>
-            </header>
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-md-3">
-
-                        <article href="#" class="card-banner h-100 bg2">
-                            <div class="card-body zoom-wrap">
-                                <h5 class="title">Machinery items for manufacturers</h5>
-                                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit
-                                    amet, cLorem ipsum dolor sit amet, c</p>
-                                <a href="#" class="btn btn-warning">Explore</a>
-                                <img src="images/items/item-sm.png" height="200" class="img-bg zoom-in">
-                            </div>
-                        </article>
-
-                    </div>
-                    <!-- col.// -->
-                    <div class="col-md-9">
-                        <ul class="row no-gutters border-cols">
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Home and kitchen electronic stuff collection </p>
-                                        <img class="img-sm" src="images/items/1.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Kitchen equipments collection</p>
-                                        <img class="img-sm" src="images/items/2.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Accessiries and other good items</p>
-                                        <img class="img-sm" src="images/items/3.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Techs, Electronics</p>
-                                        <img class="img-sm" src="images/items/4.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="row no-gutters border-cols">
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Home and kitchen electronic stuff </p>
-                                        <img class="img-sm" src="images/items/1.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Kitchen equipments collection</p>
-                                        <img class="img-sm" src="images/items/2.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Accessiries and other good items</p>
-                                        <img class="img-sm" src="images/items/3.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Techs, Electronics</p>
-                                        <img class="img-sm" src="images/items/4.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- col.// -->
-                </div>
-                <!-- row.// -->
-
-            </div>
-            <!-- card.// -->
-
-        </div>
-        <!-- container .//  -->
-    </section>
+    {% include 'main/category_sections.html' %}
+   
     <!-- ========================= SECTION CONTENT END// ========================= -->
 
-    <!-- ========================= SECTION CONTENT ========================= -->
-    <section class="section-content padding-y-sm bg">
-        <div class="container">
-
-            <header class="section-heading heading-line">
-                <h4 class="title-section bg text-uppercase">Food & Beverage</h4>
-            </header>
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-md-3">
-
-                        <article href="#" class="card-banner h-100 bg2">
-                            <div class="card-body zoom-wrap">
-                                <h5 class="title">Good equipments for cooking food and cakes</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. </p>
-                                <a href="#" class="btn btn-warning">Explore</a>
-                                <img src="images/items/item-sm.png" height="200" class="img-bg zoom-in">
-                            </div>
-                        </article>
-
-                    </div>
-                    <!-- col.// -->
-                    <div class="col-md-9">
-                        <ul class="row no-gutters border-cols">
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Home and kitchen electronic stuff collection </p>
-                                        <img class="img-sm" src="images/items/1.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Kitchen equipments collection</p>
-                                        <img class="img-sm" src="images/items/2.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Accessiries and other good items</p>
-                                        <img class="img-sm" src="images/items/3.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Techs, Electronics</p>
-                                        <img class="img-sm" src="images/items/4.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="row no-gutters border-cols">
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Home and kitchen electronic stuff </p>
-                                        <img class="img-sm" src="images/items/1.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Kitchen equipments collection</p>
-                                        <img class="img-sm" src="images/items/2.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Accessiries and other good items</p>
-                                        <img class="img-sm" src="images/items/3.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-6 col-md-3">
-                                <a href="#" class="itembox">
-                                    <div class="card-body">
-                                        <p class="word-limit">Techs, Electronics</p>
-                                        <img class="img-sm" src="images/items/4.jpg">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- col.// -->
-                </div>
-                <!-- row.// -->
-
-            </div>
-            <!-- card.// -->
-
-        </div>
-        <!-- container .//  -->
-    </section>
-    <!-- ========================= SECTION CONTENT END// ========================= -->
+  
 
     <!-- ========================= SECTION REQUEST ========================= -->
     <section class="section-request bg padding-y-sm">
@@ -353,9 +178,9 @@
                             <br>
                             <h2 style="max-width: 300px;">Big boundle or collection of featured items</h2>
                             <br>
-                            <a class="btn btn-warning" href="#">Detail info » </a>
+                            <a class="btn btn-primary" href="#">Detail info » </a>
                         </figcaption>
-                        <img src="images/banners/banner-request.jpg">
+                        <img src="{% static 'images/banners/banner-request.jpg' %}">
                     </figure>
                 </div>
                 <!-- col // -->
@@ -391,7 +216,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-warning">Request for quote</button>
+                                <button class="btn btn-primary">Request for quote</button>
                             </div>
                         </form>
                     </div>
@@ -414,230 +239,14 @@
             </header>
 
             <div class="row-sm">
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/3.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Good item name</a>
-                            </h6>
+                {% if featured_product %}
 
-                            <div class="price-wrap">
-                                <span class="price-new">$1280</span>
-                                <del class="price-old">$1980</del>
-                            </div>
-                            <!-- price-wrap.// -->
+                    {% for featured in featured_product %}
+                    
+                        {% include 'main/snippet/featured_product_card.html' with instance=featured %}
 
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/4.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/5.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/6.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/3.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Good item name</a>
-                            </h6>
-
-                            <div class="price-wrap">
-                                <span class="price-new">$1280</span>
-                                <del class="price-old">$1980</del>
-                            </div>
-                            <!-- price-wrap.// -->
-
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/4.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/5.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/6.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/3.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Good item name</a>
-                            </h6>
-
-                            <div class="price-wrap">
-                                <span class="price-new">$1280</span>
-                                <del class="price-old">$1980</del>
-                            </div>
-                            <!-- price-wrap.// -->
-
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/4.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/5.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">Name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
-                <!-- col // -->
-                <div class="col-md-2">
-                    <figure class="card card-product">
-                        <div class="img-wrap">
-                            <img src="images/items/6.jpg">
-                        </div>
-                        <figcaption class="info-wrap">
-                            <h6 class="title ">
-                                <a href="#">The name of product</a>
-                            </h6>
-                            <div class="price-wrap">
-                                <span class="price-new">$280</span>
-                            </div>
-                            <!-- price-wrap.// -->
-                        </figcaption>
-                    </figure>
-                    <!-- card // -->
-                </div>
+                    {% endfor %}
+                {% endif %}
                 <!-- col // -->
             </div>
             <!-- row.// -->
@@ -649,109 +258,7 @@
     <!-- ========================= SECTION ITEMS .END// ========================= -->
 
     <!-- ========================= SECTION LINKS ========================= -->
-    <section class="section-links bg padding-y-sm">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <header class="section-heading heading-line">
-                        <h4 class="title-section bg text-uppercase">Suppliers by Region</h4>
-                    </header>
-
-                    <ul class="list-icon row">
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-usa.png">
-                                <span>United States</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-in.png">
-                                <span>India</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-tr.png">
-                                <span>Turkey</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-kr.png">
-                                <span>Korea</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-tr.png">
-                                <span>Turkey</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <img src="images/icons/flag-kr.png">
-                                <span>Korea</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- col // -->
-
-                <div class="col-sm-6">
-                    <header class="section-heading heading-line">
-                        <h4 class="title-section bg text-uppercase">Trade services</h4>
-                    </header>
-                    <ul class="list-icon row">
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon fa fa-comment"></i>
-                                <span>Trade Assistance</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon  fa fa-suitcase"></i>
-                                <span>Business Identity</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon fa fa-globe"></i>
-                                <span>Worldwide delivery</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon fa fa-phone-square"></i>
-                                <span>Customer support</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon fa fa-globe"></i>
-                                <span>Worldwide delivery</span>
-                            </a>
-                        </li>
-                        <li class="col-md-4">
-                            <a href="#">
-                                <i class="icon fa fa-phone-square"></i>
-                                <span>Customer support</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- col // -->
-            </div>
-            <!-- row // -->
-
-            <figure class="mt-3 banner p-3 bg-secondary">
-                <div class="text-lg text-center white">Another banner can be here</div>
-            </figure>
-
-        </div>
-        <!-- container // -->
-    </section>
+   
     <!-- ========================= SECTION LINKS END.// ========================= -->
 
 

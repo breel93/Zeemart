@@ -1,0 +1,12 @@
+    <li class="col-md-3 col-6">
+            <figure class="card card-xs card-product">
+                <div class="img-wrap">
+                    {% if sub.image %}
+                     <img src="{{ sub.image.url }}">
+                    {% endif %}
+                </div>
+                <figcaption class="info-wrap text-center">
+                    <h6 class="title text-truncate"><a href="{{ sub.get_subcategory_url }}">{{sub.title}}</a></h6>
+                </figcaption>
+            </figure> <!-- card // -->
+    </li> 

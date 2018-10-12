@@ -9,10 +9,7 @@
 
    {% block content %}
 
- 
 
-
-   
 
     <section class="section-content bg padding-y">
             <div class="container">
@@ -25,21 +22,13 @@
                                         <header class="card-header">
                                             <a class="" aria-expanded="true" href="#" data-toggle="collapse" data-target="#collapse22">
                                                 <i class="icon-action fa fa-chevron-down"></i>
-                                                <h6 class="title">{{ sub_category_product.title }}/Change this</h6>
+                                                <h6 class="title">Change this</h6>
                                             </a>
                                         </header>
                                         <div style="" class="filter-content collapse show" id="collapse22">
                                             <div class="card-body">
                                                
-                                                {% if subcategory_name %}
-                                                    <ul class="list-unstyled list-lg">
-                                                        {% for sub_category in subcategory_name %}
-                                                            <li><a href="{{ sub_category.get_subsubcategory_url }}">{{ sub_category.title }} 
-                                                                <!-- <span class="float-right badge badge-light round">142</span> -->
-                                                            </a></li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                {% endif %}
+                                            
                                             </div> <!-- card-body.// -->
                                         </div> <!-- collapse .// -->
                                     </article> <!-- card-group-item.// -->
@@ -107,10 +96,10 @@
 
                         <div class="row-sm">
                                 
-                            {% for product in sub_category_product %}
+                            {% for product in subsub_category_product %}
                                 {% include 'products/snippet/card.html' with instance=product %}
                             {% endfor %}
-                                
+                       
                                 
                         </div>
                             

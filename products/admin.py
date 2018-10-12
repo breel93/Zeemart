@@ -1,5 +1,5 @@
 from django.contrib import admin
-from products.models import Product, Category, SubCategory, ProductImage
+from products.models import Product, Category, SubCategory,MoreImages, SubSubCategory
 
 # Register your models here.
 
@@ -8,7 +8,7 @@ class ProductCategoryInline(admin.TabularInline):
     extra = 1
 
 class ProductImageInline(admin.TabularInline):
-    model = ProductImage
+    model = MoreImages
     extra = 2
 
 class ProductAdmin(admin.ModelAdmin):
@@ -37,8 +37,12 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 class SubCategoryInline(admin.TabularInline):
     model = Product
     extra = 1
+class SubCategorySubInline(admin.TabularInline):
+    model = SubSubCategory
+    extra = 1
+
 class ProductSubCategoryAdmin(admin.ModelAdmin):
-    inlines = [ SubCategoryInline,]
+    inlines = [ SubCategorySubInline ,]
     list_display = ['__str__','title' ]
 
     class Meta:
@@ -51,3 +55,4 @@ class ProductSubCategoryAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, ProductCategoryAdmin)
 admin.site.register(SubCategory, ProductSubCategoryAdmin)
+admin.site.register(SubSubCategory)
