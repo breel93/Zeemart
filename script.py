@@ -1,5 +1,10 @@
 import os
 
-with open('products.json', encoding="utf-8", errors='ignore') as f:
+
+with open('products.json','rb') as f:
     contents = f.read()
+newdata = open('products/products.json', 'wb')
+newdata.write(contents)
+newdata.close
+
 
