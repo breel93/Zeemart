@@ -141,15 +141,7 @@
                             </main> <!-- col.// -->
                         </div>
                     {% else %}  
-                        <div class='col-12 col-md-6 mx-auto py-5'>
-                            <h5>Ops!!! No result</h5>
-    
-                            <hr>
-    
-                            <img src="{% static 'images/banners/ops.jpg' %}"/>
-    
-                            
-                        </div>
+                        {% include 'products/snippet/error.html' %} 
                     {% endif %} 
 
                 </div>

@@ -7,53 +7,58 @@
 {% endblock %}
 
 
+
    {% block content %}
+        {% if object_list %}
+            <section class="section-content bg padding-y">
+                <div class="container">
 
-        <section class="section-content bg padding-y">
-            <div class="container">
+                    <div class="row">
+                        <aside class="col-sm-3">
 
-                <div class="row">
-                    <aside class="col-sm-3">
-
-                        {% include 'products/snippet/filter_section.html' %} 
+                            {% include 'products/snippet/filter_section.html' %} 
 
 
-                    </aside> <!-- col.// -->
-                    <main class="col-sm-9">
+                        </aside> <!-- col.// -->
+                        <main class="col-sm-9">
 
-                        <div class="row-sm">
-                                
-                            {% for obj in object_list %}
-                                {% include 'products/snippet/card.html' with instance=obj %}
-                            {% endfor %}
-                                
-                                
-                        </div>
-                            
-                            <br>
-                            <br>
-                
-                            <div class="loading" style="display: none;">
-                                Loading...
+                            <div class="row-sm">
+                                    
+                                {% for obj in object_list %}
+                                    {% include 'products/snippet/card.html' with instance=obj %}
+                                {% endfor %}
+                                    
+                                    
                             </div>
-                
-                            <br>
-                            <br>
-                
-                            
-                            {% if is_paginated %}
-                                {% if page_obj.has_next %}
-                                <a class="infinite-more-link" href="?page={{ object_list.next_page_number }}">More</a>
-                                {% endif %}
-                            {% endif %}
+                                
+                                <br>
+                                <br>
                     
-                    </main> <!-- col.// -->
-                </div>
+                                <div class="loading" style="display: none;">
+                                    Loading...
+                                </div>
+                    
+                                <br>
+                                <br>
+                    
+                                
+                                {% if is_paginated %}
+                                    {% if page_obj.has_next %}
+                                    <a class="infinite-more-link" href="?page={{ object_list.next_page_number }}">More</a>
+                                    {% endif %}
+                                {% endif %}
+                        
+                        </main> <!-- col.// -->
+                    </div>
 
-            </div> <!-- container .//  -->
-        </section>
+                </div> <!-- container .//  -->
+            </section>
 
-
+        
+        {% else %}
+        
+            {% include 'products/snippet/error.html' %}
+        {% endif %}
     
 
         

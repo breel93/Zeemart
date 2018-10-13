@@ -206,24 +206,44 @@
                         </ul>
                     </aside>
                     <aside class="col-sm-3  col-md-3 white">
-                        <h5 class="title">My Account</h5>
+                        {% if user.is_authenticated %}
+                                    
+                            <h5 class="title">Hey {{request.user.first_name}}</h5>
+                            <ul class="list-unstyled">
+                            
+                                <li>
+                                    <a href="{% url 'main:customer_profile' %}"> Account Setting </a>
+                                </li>
+                                <li>
+                                    <a href="#"> My Orders </a>
+                                </li>
+                                <li>
+                                    <a href="#"> My Wishlist </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'main:change_password' %}"> Channge Password</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'main:logout' %}"> Logout </a>
+                                </li>
+                            </ul>
+                        {% else %}
+                        <h5 class="title">Hi Guest</h5>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#"> User Login </a>
+                                <a href="{% url 'main:login' %}"> User Login </a>
                             </li>
                             <li>
-                                <a href="#"> User register </a>
-                            </li>
-                            <li>
-                                <a href="#"> Account Setting </a>
-                            </li>
-                            <li>
-                                <a href="#"> My Orders </a>
+                                <a href="{% url 'main:register' %}"> User register </a>
                             </li>
                             <li>
                                 <a href="#"> My Wishlist </a>
                             </li>
+                            <li>
+                                <a href="{% url 'main:password_reset' %}"> Password Reset </a>
+                            </li>
                         </ul>
+                        {% endif %}
                     </aside>
                     <aside class="col-sm-3  col-md-3 white">
                         <h5 class="title">About</h5>
@@ -249,9 +269,9 @@
                         <article class="white">
                             <h5 class="title">Contacts</h5>
                             <p>
-                                <strong>Phone: </strong> +123456789
-                                <br>
-                                <strong>Fax:</strong> +123456789
+                                <strong>Phone: </strong> +2348162269572
+                                <!-- <br>
+                                <strong>Fax:</strong> +123456789 -->
                             </p>
 
                             <div class="btn-group white">
@@ -276,14 +296,22 @@
             </section>
             <section class="footer-bottom row border-top-white">
                 <div class="col-sm-6">
-                    <p class="text-white-50"> Made with
-                        <br> by Vosidiy M.</p>
+                    <p class="text-white-50"> Made with <i class="fa fa-heart"></i>
+                        <br> by Kola Emiola</p>
                 </div>
                 <div class="col-sm-6">
                     <p class="text-md-right text-white-50">
                         Copyright &copy
                         <br>
-                        <a href="http://bootstrap-ecommerce.com" class="text-white-50">Bootstrap-ecommerce UI kit</a>
+                        <a href="http://breel93.github.io" class="text-white-50">2018 | ZeeMart</a>
+                    </p>
+                </div>
+                <div class="col-sm-6"></div>
+        
+                <div class="col-sm-6">
+                    <p class="text-md-right text-white-50">
+                        Bootstrap Theme:
+                        <a href="http://bootstrap-ecommerce.com" class="text-white-50">Bootstrap-ecommerce UI kit by Vosidiy M.</a>
                     </p>
                 </div>
             </section>
