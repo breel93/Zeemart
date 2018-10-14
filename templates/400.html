@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+{% load staticfiles %} {% block content %}
+    {% block style %}
+        <link href='{% static "css/index.css" %}' rel="stylesheet">
+    {% endblock %}
+
+    <h1> Error </h1>
+    <div class="container" >
+        <!-- ========================= SECTION MAIN ========================= -->
+        <section class="section-main bg padding-y-sm">
+            <div class="container">
+                <div class="card">
+
+                    <div class="card-banner" style="height:500px; width:500px; background-image:url({% static 'images/banners/ops.jpg' %})">
+                        <article class="overlay top text-center">
+                            <h5 class="title mb-0">Error 400, Bad Request</h5>
+                        </article>
+                    </div> <!-- card.// -->
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
