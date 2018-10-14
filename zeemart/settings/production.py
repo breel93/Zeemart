@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-h9mhp1j@=_$^**y+ko3mlyfbidio-cm#%13!vur64bsi9&@@n'
-
+# SECRET_KEY = '-h9mhp1j@=_$^**y+ko3mlyfbidio-cm#%13!vur64bsi9&@@n'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 # DEBUG = Truecls
@@ -57,9 +57,13 @@ INSTALLED_APPS = [
     
 ]
 
-MAILCHIMP_API_KEY = "fffd3c8120f6c442881c75a0cb519cb1-us18"
+MAILCHIMP_API_KEY = os.environ.get("MAILCHIMP_API_KEY")
 MAILCHIMP_DATA_CENTER = "us18"
-MAILCHIMP_EMAIL_LIST_ID = "bc0e09d067"
+MAILCHIMP_EMAIL_LIST_ID = os.environ.get("MAILCHIMP_EMAIL_LIST_ID")
+
+# MAILCHIMP_API_KEY = os.environ.get("fffd3c8120f6c442881c75a0cb519cb1-us18")
+# MAILCHIMP_DATA_CENTER = "us18"
+# MAILCHIMP_EMAIL_LIST_ID = "bc0e09d067"
 
 
 MIDDLEWARE = [
@@ -189,7 +193,7 @@ SECURE_HSTS_SECONDS             = 1000000
 SECURE_FRAME_DENY               = True
 
 
-AWS_GROUP_NAME = "zeemart_ecommerce_group"
-AWS_USERNAME = "zeemart"
-AWS_ACCESS_KEY_ID = "AKIAI6KXATZCAQ5MRT4A"
-AWS_SECRET_KEY = "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"
+# AWS_GROUP_NAME = "zeemart_ecommerce_group"
+# AWS_USERNAME = "zeemart"
+# AWS_ACCESS_KEY_ID = "AKIAI6KXATZCAQ5MRT4A"
+# AWS_SECRET_KEY = "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"
