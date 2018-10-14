@@ -4,14 +4,19 @@
         <link href='{% static "css/index.css" %}' rel="stylesheet">
     {% endblock %}
 
-    <h1> Error </h1>
+    
     <div class="container" >
         <!-- ========================= SECTION MAIN ========================= -->
         <section class="section-main bg padding-y-sm">
             <div class="container">
                 <div class="card">
 
-                    <div class="card-banner" style="height:500px; width:500px; background-image:url({% static 'images/banners/ops.jpg' %})">
+                    <div class="card-banner" style="height:500px; width:100%; background-image:url({% static 'images/banners/ops.jpg' %});
+                                height: 500px;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                position: relative;">
                         <article class="overlay top text-center">
                             <h5 class="title mb-0">Error 400, Bad Request</h5>
                         </article>
