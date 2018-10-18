@@ -12,6 +12,8 @@
     {% if category %}
         <section class="section-main bg padding-y-sm">
 
+           
+
             <div class="container">
                 <div class="row">
                     
@@ -23,7 +25,11 @@
                                         <header class="card-header">
                                             <a class="" aria-expanded="true" href="#" data-toggle="collapse" data-target="#collapse22">
                                                 <i class="icon-action fa fa-chevron-down"></i>
-                                                <h6 class="title">{{ sub_category_product.title }}/Change this</h6>
+                                                {% if category_name %}
+                                                    {% for category_name in category_name %}
+                                                        <h6 class="title">{{ category_name.title }}</h6>
+                                                    {% endfor %}
+                                                {% endif %}
                                             </a>
                                         </header>
                                         <div style="" class="filter-content collapse show" id="collapse22">
@@ -51,7 +57,7 @@
                                         <header class="card-header">
                                             <a href="#" data-toggle="collapse" data-target="#collapse44">
                                                 <i class="icon-action fa fa-chevron-down"></i>
-                                                <h6 class="title">By Feature </h6>
+                                                <h6 class="title">By Features </h6>
                                             </a>
                                         </header>
                                         <div class="filter-content collapse show" id="collapse44">

@@ -20,17 +20,15 @@
                                 <div class="card card-filter">
                                         <article class="card-group-item">
                                             <header class="card-header">
-                                                <a class="" aria-expanded="true" href="#" data-toggle="collapse" data-target="#collapse22">
-                                                    <i class="icon-action fa fa-chevron-down"></i>
-                                                    <h6 class="title">Change this</h6>
+                                                <a class=""href="#" >
+                                                {% if subsub_name %}
+                                                    {% for sub_name in subsub_name %}
+                                                        <h6 class="title">In {{ sub_name.title }} </h6>
+                                                    {% endfor %}
+                                                {% endif %}
                                                 </a>
                                             </header>
-                                            <div style="" class="filter-content collapse show" id="collapse22">
-                                                <div class="card-body">
-                                                
-                                                
-                                                </div> <!-- card-body.// -->
-                                            </div> <!-- collapse .// -->
+                                           
                                         </article> <!-- card-group-item.// -->
                                         
                                         <article class="card-group-item">

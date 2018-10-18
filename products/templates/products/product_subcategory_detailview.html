@@ -25,7 +25,11 @@
                                             <header class="card-header">
                                                 <a class="" aria-expanded="true" href="#" data-toggle="collapse" data-target="#collapse22">
                                                     <i class="icon-action fa fa-chevron-down"></i>
-                                                    <h6 class="title">{{ sub_category_product.title }}/Change this</h6>
+                                                    {% if sub_name %}
+                                                        {% for sub_name in sub_name %}
+                                                            <h6 class="title">{{ sub_name.title }} </h6>
+                                                        {% endfor %}
+                                                    {% endif %}
                                                 </a>
                                             </header>
                                             <div style="" class="filter-content collapse show" id="collapse22">
