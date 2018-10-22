@@ -29,5 +29,6 @@ urlpatterns =[
      url(r'^category/(?P<slug>[\w-]+)/$', views.get_category, name='category-detail'),
      url(r'^category/(?P<slug>[\w-]+)/(?P<sub_slug>[\w-]+)/$', views.get_sub_category, name='subcategory-detail'),
      url(r'^category/(?P<slug>[\w-]+)/(?P<sub_slug>[\w-]+)/(?P<subsub_slug>[\w-]+)/$', views.get_sub_sub_category, name='subsubcategory-detail'),
+     url(r'^brand/(?P<slug>[\w-]+)/$', views.get_brand, name='brand-detail'),
 
 ]

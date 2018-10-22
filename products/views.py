@@ -121,7 +121,9 @@ class ProductCategoryListView(ListView):
 #         #     raise Http404("wtf ")
 #         context['instance'] = instance
 #         return context
-        
+
+def get_brand(request,slug):
+    pass      
 
 def get_category(request, slug):
     category = Product.objects.filter(category__slug=slug)
