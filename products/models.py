@@ -1,4 +1,5 @@
 from django.db.models import Q
+from random import randint
 import random
 import os
 from django.db import models
@@ -7,6 +8,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from zeemart.utils import unique_slug_generator
+from django.db.models import Count
 # Create your models here.
 
 

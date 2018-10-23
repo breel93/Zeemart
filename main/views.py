@@ -10,6 +10,7 @@ from django.contrib.auth import update_session_auth_hash, authenticate, login
 from .forms import RegistrationForm, UpdateCustomerForm,UpdateCustomerFormTwo,LoginForm
 from .signals import user_logged_in
 from products.models import Category, SubCategory,SubSubCategory, Product
+from random import shuffle
 # Create your views here.
 # def home_page(request):
 #     return render(request, "home_page.html", {})
@@ -21,7 +22,8 @@ class IndexView(TemplateView):
         category      = Category.objects.all()[:7]
         subcategory   = SubCategory.objects.all()
         subsubcategory  = SubSubCategory.objects.all()
-        featured_product = Product.objects.filter(featured = True)[:12]
+        featured_product = list(Product.objects.filter(featured = True))[:12]
+        shuffle(featured_product)
         context = { 'category':category,
                 'subcategory': subcategory,
                 'subsubcategory': subsubcategory,
