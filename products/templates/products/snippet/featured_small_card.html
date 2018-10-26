@@ -1,4 +1,4 @@
-<div class="col-md-12 col-sm-3">
+<div class="col-md-6 col-sm-3">
     <figure class="item border-bottom mb-3">
         <a href="{{ instance.get_absolute_url }}" class="img-wrap">
          {% if instance.image %}
@@ -9,7 +9,7 @@
             <div class="price-wrap mb-3">
                 <span class="price-new">₦{{instance.price}}</span>
                 {% if instance.old_price and instance.old_price > instance.price %}
-                 <del class="price-old">₦{{instance.old_price}}</del>
+                 <small><del class="price-old">₦{{instance.old_price}}</del></small>
                 {% endif %}
             </div> <!-- price-wrap.// -->
         </figcaption>

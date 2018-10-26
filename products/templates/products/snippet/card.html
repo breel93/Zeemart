@@ -13,7 +13,7 @@
         <div class="price-wrap h5">
           <span class="price-new">₦{{instance.price}}</span>
           {% if instance.old_price and instance.old_price > instance.price %}
-            <del class="price-old">₦{{instance.old_price}}</del>
+            <small><del class="price-old">₦{{instance.old_price}}</del></small>
           {% endif %}
         </div> <!-- price-wrap.// -->
       </div> <!-- action-wrap -->

@@ -50,24 +50,6 @@ class ProductListView(ListView):
 
 
     
-# class ProductDetailView(DetailView):
-#     queryset = Product.objects.all()
-#     template_name = "products/product_details.html"
-
-
-#     def get_context_data(self, *args,**kwargs):
-#         context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
-#         return context
-    
-#     def get_object(self, *args, **kwargs):
-#         request = self.request
-#         pk = self.kwargs.get('pk')
-#         instance = Product.objects.get_by_id(pk)
-#         if instance is None :
-#             raise Http404("Product doest not exist")
-#         return instance
-
-# class ProductDetailSlugView(ObjectViewedMixin, DetailView):
 
 class ProductDetailSlugView(DetailView):
     queryset = Product.objects.all()
@@ -76,7 +58,8 @@ class ProductDetailSlugView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
-        featured_product = Product.objects.filter(featured = True)[:3]
+        featured_product = list(Product.objects.filter(featured = True))[:3]
+        shuffle(featured_product)
         context['cart'] = cart_obj
         context['featured_product'] = featured_product
         return context
@@ -102,27 +85,6 @@ class ProductCategoryListView(ListView):
     queryset      = Category.objects.all()[:6]
 
 
-# class ProductCategoryDetailView(DetailView):
-    
-#     template_name = "products/product_category_detailview.html"
-#     def get_object(self,*args, **kwargs):
-        
-#         request = self.request
-#         slug = self.kwargs.get('slug')
-#         #instance = get_object_or_404(Product, slug=slug, active=True)
-#         instance = Product.objects.filter(category__slug=slug)
-#         print(instance)
-#         # try:
-            
-#         # except Category.DoesNotExist:
-#         #     raise Http404("Not found..")
-#         # # except Product.MultipleObjectsReturned:
-#         # #     qs = Product.objects.filter(slug=slug, active=True)
-#         # #     instance = qs.first()
-#         # except:
-#         #     raise Http404("wtf ")
-#         context['instance'] = instance
-#         return context
 
 def get_brand(request,slug):
     pass      

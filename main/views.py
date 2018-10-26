@@ -30,12 +30,6 @@ class IndexView(TemplateView):
                 'featured_product': featured_product }
         return context
 
-# def subcategory_list(request, slug):
-#     subcategory   = SubCategory.objects.filter(category__slug=slug)
-#     print(subcategory)
-#     # category      = Category.objects.all()[:7]
-#     context = {'subcategory': subcategory}
-#     return render(request,'main/index.html', context)
 
 
 def subcategory_list(request, slug):
@@ -108,36 +102,6 @@ def change_password(request):
     args = {'form':form}
     return render(request,'main/change_password.html', args)     
 
-
-
-# def login_page(request):
-#     form = LoginForm(request.POST or None)
-#     context = {
-#         "form": form
-#     }
-    
-#     next_ = request.GET.get('next')
-#     next_post = request.POST.get('next')
-#     redirect_path = next_ or next_post or None
-#     if form.is_valid():
-#         print(form.cleaned_data)
-#         email  = form.cleaned_data.get("email")
-#         password  = form.cleaned_data.get("password")
-#         user = authenticate(request, email=email, password=password)
-#         if user is not None:
-            
-#             login(request, user)
-            
-#             if is_safe_url(redirect_path, request.get_host()):
-#                 return redirect(redirect_path)
-#             else:
-#                 return redirect("/")
-           
-#         else:
-#             # Return an 'invalid login' error message.
-#             print("Error")
-
-#     return render(request, "main/login.html", context)
 
 class LoginView(FormView):
     form_class = LoginForm
