@@ -58,7 +58,7 @@ class ProductDetailSlugView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
-        featured_product = list(Product.objects.filter(featured = True))[:3]
+        featured_product = list(Product.objects.filter(featured = True))[:2]
         shuffle(featured_product)
         context['cart'] = cart_obj
         context['featured_product'] = featured_product
