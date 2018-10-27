@@ -2,7 +2,6 @@ import datetime
 import os
 
 
-
 AWS_GROUP_NAME = os.environ.get("AWS_GROUP_NAME")
 AWS_USERNAME = os.environ.get("AWS_USERNAME")
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
