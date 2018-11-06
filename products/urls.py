@@ -7,7 +7,7 @@ from products.views import (
         ProductFeaturedListView,
         ProductFeaturedDetailView,
         ProductDetailSlugView,
-        ProductCategoryListView,
+        # ProductCategoryListView,
         # ProductCategoryDetailView,
         
         )
@@ -24,7 +24,7 @@ urlpatterns =[
      url(r'^featured/$',ProductFeaturedListView.as_view(),name='product-featured-view'),
      url(r'^featured/details/(?P<pk>\d+)/$',ProductFeaturedDetailView.as_view(),name='product-featured-details'),
      
-     url(r'^category/$', ProductCategoryListView.as_view(), name='category-list'),
+#      url(r'^category/$', ProductCategoryListView.as_view(), name='category-list'),
 #      url(r'^category/(?P<slug>[\w-]+)/$', ProductCategoryDetailView.as_view(), name='category-detail'),
      url(r'^category/(?P<slug>[\w-]+)/$', views.get_category, name='category-detail'),
      url(r'^category/(?P<slug>[\w-]+)/(?P<sub_slug>[\w-]+)/$', views.get_sub_category, name='subcategory-detail'),

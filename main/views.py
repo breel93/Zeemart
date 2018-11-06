@@ -11,6 +11,8 @@ from .forms import RegistrationForm, UpdateCustomerForm,UpdateCustomerFormTwo,Lo
 from .signals import user_logged_in
 from products.models import Category, SubCategory,SubSubCategory, Product
 from random import shuffle
+import random
+from django.db.models import Max
 # Create your views here.
 # def home_page(request):
 #     return render(request, "home_page.html", {})
@@ -18,19 +20,26 @@ from random import shuffle
 class IndexView(TemplateView):
     template_name = 'main/index.html'
 
+
+    
+
     def get_context_data(self,*args, **kwargs):
         category      = Category.objects.all()[:7]
         subcategory   = SubCategory.objects.all()
         subsubcategory  = SubSubCategory.objects.all()
-        featured_product = list(Product.objects.filter(featured = True))[:12]
+        featured_product = list(Product.objects.filter(featured = True))
         shuffle(featured_product)
+
         context = { 'category':category,
                 'subcategory': subcategory,
                 'subsubcategory': subsubcategory,
                 'featured_product': featured_product }
         return context
+    
 
-
+    
+            
+    
 
 def subcategory_list(request, slug):
     subcategory   = SubCategory.objects.filter(category__slug=slug)

@@ -2,6 +2,9 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from products.models import Product
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
+from random import shuffle
 
 # Create your views here.
 
@@ -23,16 +26,24 @@ class SearchProductListView(ListView):
         method_dict = request.GET
         query = method_dict.get('q', None) # method_dict['q']
         if query is not None:
-            # lookups = Q(title__icontains=query) | Q(description__icontains=query)
-            return Product.objects.search(query)
+            product_list = list(Product.objects.search(query))
+            shuffle(product_list)
+            paginator = Paginator(product_list, 18)
+            page = self.request.GET.get('page')
+            
+
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+            return products
+            
+            # return Product.objects.search(query)
         return Product.objects.featured()
         '''
         __icontains = field contains this
         __iexact = fields is exactly this
         '''
 
-# class CategoryListView(ListView):
-#     template_name = "search/category_list.html"     
-
-#     def get_context_data(self,*args, **kwargs):
-#         con

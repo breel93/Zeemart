@@ -241,7 +241,7 @@
             <div class="row-sm">
                 {% if featured_product %}
 
-                    {% for featured in featured_product %}
+                    {% for featured in featured_product|slice:":12" %}
                     
                         {% include 'main/snippet/featured_product_card.html' with instance=featured %}
 

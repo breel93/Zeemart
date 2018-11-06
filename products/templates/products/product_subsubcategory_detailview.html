@@ -102,21 +102,8 @@
                             </div>
                                 
                                 <br>
-                                <br>
-                    
-                                <div class="loading" style="display: none;">
-                                    Loading...
-                                </div>
-                    
-                                <br>
-                                <br>
-                    
-                                
-                                {% if is_paginated %}
-                                    {% if page_obj.has_next %}
-                                    <a class="infinite-more-link" href="?page={{ object_list.next_page_number }}">More</a>
-                                    {% endif %}
-                                {% endif %}
+                                {% include 'products/snippet/paginator.html' with paginate=subsub_category_product %}
+                            
                         
                         </main> <!-- col.// -->
                     </div>

@@ -9,7 +9,7 @@
 
    {% block content %}
 
-    {% if category %}
+    {% if category_product %}
         <section class="section-main bg padding-y-sm">
 
            
@@ -38,7 +38,7 @@
                                                     <ul class="list-unstyled list-lg">
                                                         {% for sub_category in sub_category %}
                                                             <li><a href="{{ sub_category.get_subcategory_url }}">{{ sub_category.title }} 
-                                                                <!-- <span class="float-right badge badge-light round">142</span> -->
+                                                                <span class="float-right badge badge-light round">{{ sub_category.num_product }}</span>
                                                             </a></li>
                                                         {% endfor %}
                                                         <!-- <li><a href="#">Dapibus ac facilisis <span class="float-right badge badge-light round">3</span>
@@ -120,7 +120,7 @@
 
                         <div class="row-sm">
                                 
-                            {% for product in category %}
+                            {% for product in category_product %}
                                 {% include 'products/snippet/card.html' with instance=product %}
                             {% endfor %}
                                 
@@ -128,21 +128,8 @@
                         </div>
                             
                             <br>
-                            <br>
-                
-                            <div class="loading" style="display: none;">
-                                Loading...
-                            </div>
-                
-                            <br>
-                            <br>
-                
-                            
-                            {% if is_paginated %}
-                                {% if page_obj.has_next %}
-                                <a class="infinite-more-link" href="?page={{ object_list.next_page_number }}">More</a>
-                                {% endif %}
-                            {% endif %}
+                            {% include 'products/snippet/paginator.html' with paginate=category_product %}
+                          
                     
                     </main> <!-- col.// -->
                 </div>
