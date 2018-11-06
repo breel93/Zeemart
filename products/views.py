@@ -122,7 +122,7 @@ def get_category(request, slug):
     category_name   = Category.objects.filter(slug = slug)[:1]
 
     shuffle(category_product_list)
-    paginator = Paginator(category_product_list, 1)
+    paginator = Paginator(category_product_list, 18)
     page = request.GET.get('page')
 
     try:
@@ -143,7 +143,7 @@ def get_sub_category(request, slug, sub_slug):
     sub_name = SubCategory.objects.filter(category__slug=slug, slug = sub_slug)[:1]
     sub_category_product_list = list(Product.objects.filter(category__slug=slug, subcategory__slug = sub_slug))
     shuffle(sub_category_product_list)
-    paginator = Paginator(sub_category_product_list, 1)
+    paginator = Paginator(sub_category_product_list, 18)
     page = request.GET.get('page')
 
     try:
@@ -164,7 +164,7 @@ def get_sub_category(request, slug, sub_slug):
 def get_sub_sub_category(request, slug, sub_slug, subsub_slug):
     subsub_category_product_list = list(Product.objects.filter(category__slug=slug, subcategory__slug = sub_slug, subsubcategory__slug = subsub_slug))
     shuffle(subsub_category_product_list)
-    paginator = Paginator(subsub_category_product_list, 1)
+    paginator = Paginator(subsub_category_product_list, 18)
     page = request.GET.get('page')
 
     try:
