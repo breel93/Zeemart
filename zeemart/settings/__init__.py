@@ -1,12 +1,12 @@
-# from .base import *
+from .base import *
 
-# from .dev import * 
+from .dev import * 
 
-from .production import *
+# from .production import *
 
-# try:
-#     from .dev import *
-# except:
-#     pass
+try:
+    from .dev import *
+except:
+    pass
 
 

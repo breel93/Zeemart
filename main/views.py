@@ -20,9 +20,6 @@ from django.db.models import Max
 class IndexView(TemplateView):
     template_name = 'main/index.html'
 
-
-    
-
     def get_context_data(self,*args, **kwargs):
         category      = Category.objects.all()[:7]
         subcategory   = SubCategory.objects.all()
